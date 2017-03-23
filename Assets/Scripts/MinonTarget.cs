@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 /// Enemy target.
 /// </summary>
-public class EnemyTarget {
+public class MinonTarget {
 	/// <summary>
 	/// The target.
 	/// </summary>
