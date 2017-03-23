@@ -1,0 +1,43 @@
+- MOBA UML 
+
+- Moving Character (MOBA - LOL)
+- Moving only on allowed zones
+- 4 Ability Buttons // classe abilita' 
+- Mana/HitPoints (abilities)  
+- ATK on enemy with RightClick
+
+- Enemy Minions Spawner
+- Melee Minions / Ranged Minions
+
+- Choosing 2 characters from LoL 
+ 						            	
+---------------------------------------------	<<<<<<<<<<<<:::D
+GameManager 					            
+
+CharacterController		Vita/Movimento/ATK/Hp regen - Mp Regen/ATKSpeed
+Ability				
+
+EnemyManager			Vita/ATK/ATK Speed/Move
+EnemyTarget
+EnemyController
+
+
+-------------------------------------------------------
+
+-Characters 
+Poppy	.RIP
+Ziggs .ok
+Zac	.RIP
+Shaco	.ok
+
+///Ziggs
+-Bouncing Bomb = ACTIVE: Ziggs throws a bouncing bomb to the target area, exploding upon coming near an enemy or reaching the end of its trajectory.The bomb can bounce up to twice, the distance traveled each time based on how far it was originally thrown.
+-Satchel Charge = ACTIVE: Ziggs flings an explosive charge towards the target area, exploding after 4 seconds or upon reactivation, dealing magic damage and Airborne icon knocking away. Ziggs can use the explosion to dash away (taking no damage in the process) 
+-Hexplosive Minefield = ACTIVE: Ziggs scatters a cluster of proximity mines over the target area, lasting for up to 10 seconds.
+Mines explodes on contact with an enemy, dealing magic damage and Slow icon slowing them for 1.5 seconds
+-Mega Inferno Bomb = ACTIVE: Ziggs deploys his ultimate creation, the Mega Inferno Bomb Minimap Mega Inferno Bomb, hurling it to the target area (grants Sight icon sight as it travels)
+
+///Shaco
+-Deceive =
+-Jack in the Box = 
+-Hallucinate = 
