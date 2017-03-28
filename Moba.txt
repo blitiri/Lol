@@ -25,10 +25,8 @@ EnemyController
 -------------------------------------------------------
 
 -Characters 
-Poppy	.RIP
-Ziggs .ok
-Zac	.RIP
-Shaco	.ok
+Rumble
+Ziggs
 
 ///Ziggs
 -Bouncing Bomb = ACTIVE: Ziggs throws a bouncing bomb to the target area, exploding upon coming near an enemy or reaching the end of its trajectory.The bomb can bounce up to twice, the distance traveled each time based on how far it was originally thrown.
@@ -37,7 +35,7 @@ Shaco	.ok
 Mines explodes on contact with an enemy, dealing magic damage and Slow icon slowing them for 1.5 seconds
 -Mega Inferno Bomb = ACTIVE: Ziggs deploys his ultimate creation, the Mega Inferno Bomb Minimap Mega Inferno Bomb, hurling it to the target area (grants Sight icon sight as it travels)
 
-///Shaco
--Deceive =
--Jack in the Box = 
--Hallucinate = 
+///Rumble
+- =
+- = 
+- = 
