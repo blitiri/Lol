@@ -25,8 +25,8 @@ EnemyController
 -------------------------------------------------------
 
 -Characters 
-Rumble
-Ziggs
+Ziggs .ok
+Rumble	.ok
 
 ///Ziggs
 -Bouncing Bomb = ACTIVE: Ziggs throws a bouncing bomb to the target area, exploding upon coming near an enemy or reaching the end of its trajectory.The bomb can bounce up to twice, the distance traveled each time based on how far it was originally thrown.
