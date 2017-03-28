@@ -8,6 +8,11 @@ public class CharacterController : MonoBehaviour {
 	private float hitdist;
 	private Vector3 targetPoint;
 	public float movementSpeed;
+
+	public Abilities ability1;
+	public Abilities ability2;
+	public Abilities ability3;
+	public Abilities ability4;
 	// Use this for initialization
 	void Start () {
 		targetPoint = transform.position;

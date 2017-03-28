@@ -25,8 +25,8 @@ EnemyController
 -------------------------------------------------------
 
 -Characters 
-Ziggs .ok
-Rumble	.ok
+Rumble
+Ziggs
 
 ///Ziggs
 -Bouncing Bomb = ACTIVE: Ziggs throws a bouncing bomb to the target area, exploding upon coming near an enemy or reaching the end of its trajectory.The bomb can bounce up to twice, the distance traveled each time based on how far it was originally thrown.
@@ -39,3 +39,15 @@ Mines explodes on contact with an enemy, dealing magic damage and Slow icon slow
 - =
 - = 
 - = 
+
+///Abilities Ziggs
+- Bouncing Bomb = Bounce Material
+- Satchel Charge = KnockAway Mechanic (Force)
+- Hexplosive Minefield = Instance Prefab / Math Function(?)
+- Inferno Bomb = Slerp
+
+///Abilities Rumble
+- FlameSplitter = Box Collider, Vector and angle 
+- Scrap Shield = Coroutine
+- Electro Harpoon = 2 Shots then CD (Coroutine)
+- The Equalizer = AOE, Pointer Location , Directing Shot
