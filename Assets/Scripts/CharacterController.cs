@@ -28,7 +28,7 @@ public class CharacterController : MonoBehaviour {
 			}
 			Debug.Log ("Clicked!");
 		}
-		Debug.DrawRay (mainCamera.transform.position, cameraRay.direction, Color.green);
+		Debug.DrawRay (mainCamera.transform.position, cameraRay.direction * Vector3.Distance(mainCamera.transform.position,transform.position) , Color.green);
 		
 		transform.position = Vector3.MoveTowards (transform.position, targetPoint, movementSpeed * Time.deltaTime);
 		transform.LookAt (targetPoint);
