@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemiesManager : MonoBehaviour {
+public class MinionController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
