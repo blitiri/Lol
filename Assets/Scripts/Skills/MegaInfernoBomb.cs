@@ -11,11 +11,10 @@ public class MegaInfernoBomb : Abilities {
 
 
 
-	public override void OnAbilityActivation(MonoBehaviour caller)
+	public override void OnAbilityActivation()
 	{
 		GameObject ball = Instantiate(megaBombPrefab, playerPosition.position, Quaternion.identity)as GameObject;
 		ball.transform.position = Vector3.Slerp (playerPosition.position, finalPosition.position, journeyTime);
-		caller.StartCoroutine("Slerp");
 
 
 	}
