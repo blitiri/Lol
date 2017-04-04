@@ -8,7 +8,7 @@ public class BouncingBomb : Abilities {
 
 	public override void OnAbilityActivation(){
 		GameObject ball = Instantiate (ballPrefab) as GameObject;
-		ball.transform.position = ballSpawnTransform;
+		ball.transform.position = ballSpawnTransform.position;
 		ball.transform.rotation = ballPrefab.transform.rotation;
 		ball.GetComponent<Rigidbody> ().AddForce (ballSpawnTransform.forward * ballForce * Time.deltaTime, ForceMode.Impulse);
 	}
