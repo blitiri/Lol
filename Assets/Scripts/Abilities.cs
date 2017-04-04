@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Abilities : ScriptableObject {
+public abstract class Abilities : ScriptableObject {
+	public abstract void OnAbilityActivation();
 }

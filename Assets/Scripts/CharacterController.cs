@@ -21,6 +21,7 @@ public class CharacterController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		CharacterMovement ();
+
 	}
 
 	public void CharacterMovement(){
@@ -37,5 +38,6 @@ public class CharacterController : MonoBehaviour {
 		
 		transform.position = Vector3.MoveTowards (transform.position, targetPoint, movementSpeed * Time.deltaTime);
 		transform.LookAt (targetPoint);
+
 	}
 }
