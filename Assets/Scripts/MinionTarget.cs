@@ -1,16 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/// <summary>
-/// Enemy target.
-/// </summary>
-public class MinionTarget {
-	/// <summary>
-	/// The target.
-	/// </summary>
-	public Transform target;
-	/// <summary>
-	/// The priority (bigger value, bigger priority)
-	/// </summary>
-	public int priority;
+public class MinionTarget : MonoBehaviour {
+
+
+    public MinionTargetManager myMinionTargetMan;
+
+
+	// Use this for initialization
+	void Start ()
+    {
+
+        myMinionTargetMan.targets.Add(transform);
+
+	}
+	
+	// Update is called once per frame
+	void Update ()
+    {
+	
+	}
 }
