@@ -2,5 +2,5 @@
 using System.Collections;
 
 public abstract class Abilities : ScriptableObject {
-	public abstract void OnAbilityActivation ();
+	public abstract void OnAbilityActivation();
 }

@@ -21,7 +21,7 @@ public class CharacterController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		CharacterMovement ();
-
+		SkillActivation ();
 	}
 
 	public void CharacterMovement(){
@@ -38,6 +38,23 @@ public class CharacterController : MonoBehaviour {
 		
 		transform.position = Vector3.MoveTowards (transform.position, targetPoint, movementSpeed * Time.deltaTime);
 		transform.LookAt (targetPoint);
+	}
 
+	public void SkillActivation(){
+		if (Input.GetKeyDown (KeyCode.Q)) {
+			ability1.OnAbilityActivation ();
+		}
+
+		if (Input.GetKeyDown (KeyCode.W)) {
+			ability2.OnAbilityActivation ();
+		}
+
+		if (Input.GetKeyDown (KeyCode.E)) {
+			ability3.OnAbilityActivation ();
+		}
+
+		if (Input.GetKeyDown (KeyCode.R)) {
+			ability4.OnAbilityActivation ();
+		}
 	}
 }
