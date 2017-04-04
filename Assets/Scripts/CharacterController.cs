@@ -16,6 +16,10 @@ public class CharacterController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		targetPoint = transform.position;
+		InitAbility (ability1);
+		InitAbility (ability2);
+		InitAbility (ability3);
+		InitAbility (ability4);
 	}
 	
 	// Update is called once per frame
@@ -43,6 +47,7 @@ public class CharacterController : MonoBehaviour {
 	public void SkillActivation(){
 		if (Input.GetKeyDown (KeyCode.Q)) {
 			ability1.OnAbilityActivation ();
+
 		}
 
 		if (Input.GetKeyDown (KeyCode.W)) {
@@ -56,5 +61,12 @@ public class CharacterController : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.R)) {
 			ability4.OnAbilityActivation ();
 		}
+	}
+
+	private void InitAbility(Abilities ability){
+		if (ability != null) {
+			ability.SetPlayer (gameObject);
+		}
+
 	}
 }

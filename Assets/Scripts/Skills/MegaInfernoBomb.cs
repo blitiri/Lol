@@ -2,7 +2,7 @@
 using System.Collections;
 [CreateAssetMenu]
 public class MegaInfernoBomb : Abilities {
-	public override void OnAbilityActivation(){
-		
+	public override void OnAbilityActivation (){
 	}
+		
 }
