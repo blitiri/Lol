@@ -36,7 +36,7 @@ public class CharacterController : MonoBehaviour {
 			if (playerPlane.Raycast (cameraRay, out hitdist)) {
 				targetPoint = cameraRay.GetPoint (hitdist);
 			}
-			Debug.Log ("Clicked!");
+			//Debug.Log ("Clicked!");
 		}
 		Debug.DrawRay (mainCamera.transform.position, cameraRay.direction * Vector3.Distance(mainCamera.transform.position,transform.position) , Color.green);
 		
