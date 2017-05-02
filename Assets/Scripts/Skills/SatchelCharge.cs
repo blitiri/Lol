@@ -7,10 +7,14 @@ public class SatchelCharge :Abilities
 {
     public GameObject satchelPrefab;
     public Transform satchelChargePos;
+    public Camera mainCamera;
+    private Vector3 mousePosition;
 
     public override void OnAbilityActivation()
     {
-        GameObject satchel = Instantiate(satchelPrefab) as GameObject;
-        satchel.transform.position = satchelChargePos.position;
+        mousePosition = Input.mousePosition;
+        mousePosition.z = 10.0f;
+        GameObject satchel = Instantiate(satchelPrefab, mainCamera.ScreenToWorldPoint(mousePosition),Quaternion.identity) as GameObject;
+        //satchel.transform.position = satchelChargePos.position;
     }
 }

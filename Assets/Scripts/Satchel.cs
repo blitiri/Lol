@@ -11,7 +11,7 @@ public class Satchel : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.W))
             {
                 Debug.Log("Colpito");
-                other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 5000 * Time.deltaTime);
+                other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 1000 * Time.deltaTime,ForceMode.Impulse);
                 Destroy(this.gameObject);
             }
         }
