@@ -15,7 +15,7 @@ public class Mine : MonoBehaviour
     {
         if(/*other.gameObject.tag=="EnemyMinion" ||*/ other.gameObject.tag=="Player")
         {
-            Debug.Log("Colpito");
+            //Debug.Log("Colpito");
             //aggiungere danno 
             Destroy(this.gameObject);
         }
