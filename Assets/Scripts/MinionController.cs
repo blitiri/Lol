@@ -5,30 +5,23 @@ using System.Collections;
 public class MinionController : MonoBehaviour
 {
 
+    /// <summary>
+    /// The NavMesh Agent of the single enemy minion.
+    /// </summary>
+    NavMeshAgent myNavMeshAg;
 
-    bool isTarget;
-
-    float sphereCastRadius;
-
-    RaycastHit info;
-
-    public NavMeshAgent myNavMeshAg;
-
-
-    void Awake()
+    private void Awake()
     {
         myNavMeshAg = GetComponent<NavMeshAgent>();
     }
 
-    // Use this for initialization
-    void Start () {
-
-        sphereCastRadius = transform.lossyScale.x / 2;
-	}
-
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
+        AddgMyselfToTheIList();
+    }
 
+    void AddgMyselfToTheIList()
+    {
+        MinionsManager.minionControllers.Add(this);
     }
 }

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MinionTarget : MonoBehaviour
+
+public class MinionTargetsManager : MonoBehaviour
 {
 
 }
