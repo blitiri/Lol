@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// Manage enemies spawing.
@@ -37,14 +38,52 @@ public class MinionsManager : MonoBehaviour {
 	/// The range attack minions quantity increase timeout.
 	/// </summary>
 	public float rangedIncreaseTimeout = 15;
+    /// <summary>
+    /// The priority (bigger value, bigger priority)
+    /// </summary>
+    public int priority;
+    /// <summary>
+    /// The total number of enemy minions.
+    /// </summary>
+    public int enemyMinions;
+    /// <summary>
+    /// The time between a minion spawn and the following.
+    /// </summary>
+    public float timeToSpawn;
+    /// <summary>
+    /// All enemy minion spawners.
+    /// </summary>
+    public Transform[] spawners;
+    /// <summary>
+    /// The array including all minion types.
+    /// </summary>
+    public GameObject[] minionPrefabs;
+    /// <summary>
+    /// All enemy MinionController.
+    /// </summary>
+    public static IList<MinionController> minionControllers = new List<MinionController>();
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private void Start()
+    {
+        minionPrefabs = new GameObject[] { meleeMinionPrefab, rangedMinionPrefab };
+        StartCoroutine(SpawningEnemyMinions());
+    }
+
+    /// <summary>
+    /// It spawns enemy minions on request.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator SpawningEnemyMinions()
+    {
+        Vector3 position;
+        for (int i = 0; i < enemyMinions; i++)
+        {
+            int spawnIndex = Random.Range(0, spawners.Length);
+            int minionIndex = (i % 2) == 0 ? 0 : 1;
+            GameObject enemyMinion = Instantiate(minionPrefabs[minionIndex], new Vector3(spawners[spawnIndex].position.x + minionPrefabs[minionIndex].transform.lossyScale.x * i, spawners[spawnIndex].position.y, spawners[spawnIndex].position.z), minionPrefabs[minionIndex].transform.rotation) as GameObject;
+            enemyMinion.layer = Register.enemyMinionLayer;
+            enemyMinion.tag = spawnIndex.ToString();
+            yield return new WaitForSeconds(timeToSpawn);
+        }
+    }
 }
