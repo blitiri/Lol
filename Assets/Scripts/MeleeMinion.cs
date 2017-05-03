@@ -4,6 +4,7 @@ using System.Collections;
 	
 public class MeleeMinion : Minion {
 
+    public Transform LifeBar;
     public GameObject lifeSlidePrefab;
     /// <summary>
     /// The radius of the sphere that detects Enemies.
@@ -21,8 +22,8 @@ public class MeleeMinion : Minion {
 
     void Start()
     {
-        GameObject lifeSlide = Instantiate(lifeSlidePrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity) as GameObject;
-        lifeSlide.GetComponent<UISprite>().SetAnchor(transform);
+        GameObject lifeSlide = Instantiate(lifeSlidePrefab, LifeBar.position, Quaternion.identity) as GameObject;
+        lifeSlide.GetComponent<UISprite>().SetAnchor(LifeBar);
     }
 
     //void DetectEnemy()
