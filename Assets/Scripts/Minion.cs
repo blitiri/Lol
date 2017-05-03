@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class MinionController : MonoBehaviour
+public class Minion : MonoBehaviour
 {
 
     /// <summary>
@@ -22,6 +22,6 @@ public class MinionController : MonoBehaviour
 
     void AddgMyselfToTheIList()
     {
-        MinionsManager.minionControllers.Add(this);
+        MinionsManager.minions.Add(this);
     }
 }
