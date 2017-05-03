@@ -13,7 +13,7 @@ public class SatchelCharge :Abilities
     public override void OnAbilityActivation()
     {
         mousePosition = Input.mousePosition;
-        mousePosition.z = 10.0f;
+        mousePosition.z = 7.8f;
         GameObject satchel = Instantiate(satchelPrefab, mainCamera.ScreenToWorldPoint(mousePosition),Quaternion.identity) as GameObject;
         //satchel.transform.position = satchelChargePos.position;
     }
