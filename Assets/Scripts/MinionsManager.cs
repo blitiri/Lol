@@ -17,7 +17,7 @@ public class MinionsManager : MonoBehaviour {
     /// <summary>
     /// It is needed not to start more than 1 SpawnEnemyMinionsIsRunning().
     /// </summary>
-    private bool SpawnEnemyMinionsIsRunning;
+    private bool SpawnMinionsIsRunning;
 	/// <summary>
 	/// The melee attack minions quantity per horde.
 	/// </summary>
@@ -47,9 +47,13 @@ public class MinionsManager : MonoBehaviour {
     /// </summary>
     public int priority;
     /// <summary>
-    /// The total number of enemy minions.
+    /// The number of enemy minions spwned each time.
     /// </summary>
-    public int enemyMinions;
+    public int enemyMinionsCount;
+    /// <summary>
+    /// The number of allied minions spawned each time.
+    /// </summary>
+    public int alliedMinionsCount;
     /// <summary>
     /// The time between a minion spawn and the following.
     /// </summary>
@@ -65,11 +69,19 @@ public class MinionsManager : MonoBehaviour {
     /// <summary>
     /// All enemy minion spawners.
     /// </summary>
-    public Transform[] spawners;
+    public Transform[] enemySpawners;
     /// <summary>
-    /// Minions destinations.
+    /// All allied minions spawners.
     /// </summary>
-    public Transform[] destinations;
+    public Transform[] alliedSpawners;
+    /// <summary>
+    /// Enemy minions destinations.
+    /// </summary>
+    public Transform[] enemyDestinations;
+    /// <summary>
+    /// Allied minions destinations.
+    /// </summary>
+    public Transform[] alliedDestinations;
     /// <summary>
     /// The array including all minion types.
     /// </summary>
@@ -77,7 +89,7 @@ public class MinionsManager : MonoBehaviour {
     /// <summary>
     /// All enemy MinionController.
     /// </summary>
-    public static IList<Minion> minions = new List<Minion>();
+    public static IList<Minion> enemyMinions = new List<Minion>();
 
     private void Start()
     {
@@ -91,32 +103,64 @@ public class MinionsManager : MonoBehaviour {
         {
             timer += Time.deltaTime;
         }
-        else if (timer >= 15 && !SpawnEnemyMinionsIsRunning)
+        else if (timer >= 15 && !SpawnMinionsIsRunning)
         {
             StartCoroutine(SpawnEnemyMinions());
-            SpawnEnemyMinionsIsRunning = true;
+            StartCoroutine(SpawnAlliedMinions());
+            SpawnMinionsIsRunning = true;
         }
     }
 
     /// <summary>
-    /// It spawns enemy minions on request.
+    /// It spawns enemy minions.
     /// </summary>
     /// <returns></returns>
     IEnumerator SpawnEnemyMinions()
     {
         Vector3 position;
-        for (int i = 0; i < enemyMinions; i++)
+        for (int i = 0; i < enemyMinionsCount; i++)
         {
-            Debug.Log(i);
-            int index = Random.Range(0, spawners.Length);
+            //Debug.Log(i);
+            int index = Random.Range(0, enemySpawners.Length);
             int minionIndex = (i % 2) == 0 ? 0 : 1;
-            GameObject enemyMinion = Instantiate(minionPrefabs[minionIndex], spawners[index].position, minionPrefabs[minionIndex].transform.rotation) as GameObject;
-            enemyMinion.layer = Register.enemyMinionLayer;
+            GameObject enemyMinion = Instantiate(minionPrefabs[minionIndex], enemySpawners[index].position, minionPrefabs[minionIndex].transform.rotation) as GameObject;
+            //enemyMinion.layer = Register.enemyMinionLayer;
             //enemyMinion.tag = spawnIndex.ToString();
             NavMeshAgent enemyMinionAgent = enemyMinion.GetComponent<NavMeshAgent>();
             enemyMinionAgent.areaMask = NavAreaMasks[index];
-            enemyMinion.tag = Register.laneTags[index];
-            enemyMinionAgent.SetDestination(destinations[0].position);
+            enemyMinion.tag = Register.enemyMinionTag;
+            enemyMinion.layer = Register.laneLayers[index];
+            enemyMinionAgent.SetDestination(enemyDestinations[0].position);
+            //foreach (Transform item in destinations)
+            //{
+            //    if (item.tag == tag)
+            //        enemyMinionAgent.SetDestination(item.position);
+            //}
+            yield return new WaitForSeconds(timeToSpawn);
+        }
+    }
+
+    /// <summary>
+    /// It spawns allied minions.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator SpawnAlliedMinions()
+    {
+        Vector3 position;
+        for (int i = 0; i < alliedMinionsCount; i++)
+        {
+            //Debug.Log(i);
+            int index = Random.Range(0, alliedSpawners.Length);
+            int minionIndex = (i % 2) == 0 ? 0 : 1;
+            GameObject alliedMinion = Instantiate(minionPrefabs[minionIndex], alliedSpawners[index].position, minionPrefabs[minionIndex].transform.rotation) as GameObject;
+            //alliedMinion.layer = Register.alliedMinionLayer;
+            //enemyMinion.tag = spawnIndex.ToString();
+            alliedMinion.GetComponent<MeshRenderer>().material.color = Color.yellow;
+            NavMeshAgent alliedMinionAgent = alliedMinion.GetComponent<NavMeshAgent>();
+            alliedMinionAgent.areaMask = NavAreaMasks[index];
+            alliedMinion.tag = Register.alliedMinionTag;
+            alliedMinion.layer = Register.laneLayers[index];
+            alliedMinionAgent.SetDestination(alliedDestinations[0].position);
             //foreach (Transform item in destinations)
             //{
             //    if (item.tag == tag)
@@ -125,7 +169,7 @@ public class MinionsManager : MonoBehaviour {
             yield return new WaitForSeconds(timeToSpawn);
         }
         timer = 0.0f;
-        SpawnEnemyMinionsIsRunning = false;
+        SpawnMinionsIsRunning = false;
     }
 }
 
