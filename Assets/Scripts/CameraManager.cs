@@ -24,16 +24,16 @@ public class CameraManager : MonoBehaviour {
 			horizontalScroll = Input.GetAxis ("Mouse X");
 			verticalScroll = Input.GetAxis ("Mouse Y");
 			zoom = Input.GetAxis ("Mouse ScrollWheel");
-			if (Input.GetKey (KeyCode.D) || (viewportPoint.x > (1 - mouseMovementPadding))) {
+			if (Input.GetKey (KeyCode.RightArrow) || (viewportPoint.x > (1 - mouseMovementPadding))) {
 				transform.Translate (new Vector3 (Mathf.Max (horizontalScroll, minScrollSpeed), 0, 0), Space.World);
 			}
-			if (Input.GetKey (KeyCode.A) || (viewportPoint.x < mouseMovementPadding)) {
+			if (Input.GetKey (KeyCode.LeftArrow) || (viewportPoint.x < mouseMovementPadding)) {
 				transform.Translate (new Vector3 (Mathf.Min (horizontalScroll, -minScrollSpeed), 0, 0), Space.World);
 			}
-			if (Input.GetKey (KeyCode.W) || (viewportPoint.y > (1 - mouseMovementPadding))) {
+			if (Input.GetKey (KeyCode.UpArrow) || (viewportPoint.y > (1 - mouseMovementPadding))) {
 				transform.Translate (new Vector3 (0, 0, Mathf.Max (verticalScroll, minScrollSpeed)), Space.World);
 			}
-			if (Input.GetKey (KeyCode.S) || ((viewportPoint.y < mouseMovementPadding * 3) && (viewportPoint.y > mouseMovementPadding * 2))) {
+			if (Input.GetKey (KeyCode.DownArrow) || ((viewportPoint.y < mouseMovementPadding * 3) && (viewportPoint.y > mouseMovementPadding * 2))) {
 				transform.Translate (new Vector3 (0, 0, Mathf.Min (verticalScroll, -minScrollSpeed)), Space.World);
 			}
 			if (zoom != 0) {
