@@ -24,6 +24,6 @@ public class Minion : MonoBehaviour
 
     void AddgMyselfToTheIList()
     {
-        MinionsManager.minions.Add(this);
+        MinionsManager.enemyMinions.Add(this);
     }
 }
