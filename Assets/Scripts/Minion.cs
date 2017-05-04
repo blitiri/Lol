@@ -4,10 +4,15 @@ using System.Collections;
 
 public class Minion : MonoBehaviour
 {
+    public float life;
     /// <summary>
     /// This minion's speed to get closer to its target.
     /// </summary>
     public float movementSpeedDuringAttack;
+    /// <summary>
+    /// The destination of this minion.
+    /// </summary>
+    public Vector3 myDestination;
     /// <summary>
     /// The target of minion's attack.
     /// </summary>
@@ -29,6 +34,7 @@ public class Minion : MonoBehaviour
     private void Start()
     {
         AddgMyselfToTheIList();
+        myDestination = myNavMeshAg.destination;
     }
 
     void AddgMyselfToTheIList()

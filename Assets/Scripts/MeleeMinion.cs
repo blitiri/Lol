@@ -25,7 +25,7 @@ public class MeleeMinion : Minion {
 
     public override IEnumerator Attack()
     {
-        myNavMeshAg.SetDestination(transform.position);
+        myNavMeshAg.enabled = false;
         while (Vector3.Distance(transform.position, target.transform.position) > transform.lossyScale.z + target.transform.lossyScale.z / 2)
         {
             transform.LookAt(target.transform);
@@ -34,15 +34,29 @@ public class MeleeMinion : Minion {
         }
         Vector3 swordStartPos = new Vector3(transform.position.x + transform.lossyScale.x / 2, transform.position.y + transform.lossyScale.y / 4, transform.position.z + transform.lossyScale.z / 2);
         GameObject sword = Instantiate(swordPrefab, swordStartPos, swordPrefab.transform.rotation) as GameObject;
-        sword.transform.LookAt(transform.position);
+        //sword.transform.LookAt(transform.position);
         sword.transform.SetParent(transform);
-        float rotation = 0;
-        while(rotation < 90)
+        while (otherMinion.life > 0 && target)
         {
-            sword.transform.RotateAround(transform.position, Vector3.up, swordAniAngle * Time.deltaTime);
-            rotation += swordAniAngle * Time.deltaTime;
+            float rotation = 0;
+            while (rotation < swordAniAngle)
+            {
+                sword.transform.RotateAround(transform.position, Vector3.up, -swordAniAngle * Time.deltaTime);
+                rotation += swordAniAngle * Time.deltaTime;
+                yield return null;
+            }
+            if (otherMinion)
+                otherMinion.life -= 20;
+            sword.transform.position = swordStartPos;
+            sword.transform.rotation = swordPrefab.transform.rotation;
+            //sword.transform.LookAt(transform.position);
+            yield return null;
         }
-        sword.transform.position = swordStartPos;
-        sword.transform.LookAt(transform.position);
+        if (otherMinion)
+            Destroy(otherMinion.gameObject);
+        Destroy(sword);
+        target = null;
+        myNavMeshAg.enabled = true;
+        myNavMeshAg.SetDestination(myDestination);
     }
 }
