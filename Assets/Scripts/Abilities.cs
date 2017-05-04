@@ -9,4 +9,6 @@ public abstract class Abilities : ScriptableObject {
 	public void SetPlayer(GameObject player){
 		this.player = player;
 	}
+
+
 }
